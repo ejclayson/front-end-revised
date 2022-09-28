@@ -1,0 +1,24 @@
+.main-navbar,
+.link {
+    color: rgb(220, 178, 9);
+    background-color: #272624;
+    /* padding-top: 3em; */
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    margin-top: auto;
+    margin-left: auto;
+
+}
+
+/* .main-navbar {
+    color: rgb(220, 178, 9);
+    background-color: #272624;
+    padding-top: 3em;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    margin-top: auto;
+    margin-left: auto;
+
+} */
