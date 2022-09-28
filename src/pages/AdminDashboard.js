@@ -2,12 +2,6 @@ import { useContext, useEffect, useState } from "react";
 import { Button, Table, Form, Modal } from "react-bootstrap";
 import { Navigate, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-/* 
-import axios from 'axios';
-
-import BootstrapTable from "react-bootstrap-table2-paginator"
-
-import paginationFactory from "react-bootstrap-table2-paginator"; */
 
 
 
