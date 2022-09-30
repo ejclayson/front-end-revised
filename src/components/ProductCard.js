@@ -75,9 +75,9 @@ export default function ProductCard({ productProp }) {
 
     return (
 
-        <div className="row">
+        <div className="mt-4 col-md-4 col-12">
             
-            <Card className="p3">
+            <Card>
                     
                     <Card.Body >
                         <Card.Title >
