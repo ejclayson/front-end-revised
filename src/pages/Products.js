@@ -35,7 +35,7 @@ export default function Products() {
             <Navigate to="/admin" />
             :
             <>
-                <div className="p-5 mt-5 mb-5">
+                <div className="container p-5 mt-5 mb-5">
                     <h1 className="text-center">Products</h1>
                     <div className="d-block d-md-flex justify-content-between">
                     {Products}
