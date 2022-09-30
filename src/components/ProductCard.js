@@ -75,10 +75,10 @@ export default function ProductCard({ productProp }) {
 
     return (
 
-        <div>
-
+        <div className="d-md-flex justify-content-around">
+            <div>
             <Card>
-                <div class="container">
+                    <div class="container col-md-2">
                     <Card.Body >
                         <Card.Title >
                             {name}
@@ -107,7 +107,7 @@ export default function ProductCard({ productProp }) {
                     </Card.Body>
                 </div>
             </Card>
-
+            </div>
         </div>
 
     )
