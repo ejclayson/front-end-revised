@@ -37,7 +37,9 @@ export default function Products() {
             <>
                 <div className="p-5 mt-5 mb-5">
                     <h1 className="text-center">Products</h1>
+                    <div className="row">
                     {Products}
+                    </div>
                 </div>
             </>
     )
