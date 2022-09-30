@@ -37,7 +37,7 @@ export default function Products() {
             <>
                 <div className="p-5 mt-5 mb-5">
                     <h1 className="text-center">Products</h1>
-                    <div className="d-flex flex-row">
+                    <div className="d-md-flex  justify-content-around">
                     {Products}
                     </div>
                 </div>
