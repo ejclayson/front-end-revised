@@ -75,7 +75,7 @@ export default function ProductCard({ productProp }) {
 
     return (
 
-        <div className="p-5 mt-4 col-md-4 col-12">
+        <div className="p-5 mt-3 col-md-3 col-3">
             
             <Card>
                     
