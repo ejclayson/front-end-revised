@@ -8,7 +8,7 @@ export default function Banner() {
             <Carousel style={{ width: '100%' }}>
                 <Carousel.Item>
                     <img
-                        className="d-block"
+                        className="d-block responsive"
                         src="/images/rl.png"
 
                     />
@@ -16,7 +16,7 @@ export default function Banner() {
                 </Carousel.Item>
                 <Carousel.Item>
                     <img
-                        className="d-block"
+                        className="d-block responsive"
                         src="/images/li.png"
 
                     />
@@ -24,7 +24,7 @@ export default function Banner() {
                 </Carousel.Item>
                 <Carousel.Item>
                     <img
-                        className="d-block"
+                        className="d-block responsive"
                         src="/images/pn.png"
 
                     />
