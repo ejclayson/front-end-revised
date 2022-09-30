@@ -79,7 +79,7 @@ export default function ProductCard({ productProp }) {
             
             <Card>
                     
-                    <Card.Body >
+                    <Card.Body className="text-center">
                         <Card.Title >
                             {name}
                         </Card.Title>
