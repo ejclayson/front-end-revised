@@ -7,7 +7,7 @@ const Footer = () => {
     return (
 
         <div className="basic-navbar-nav main-footer mb-0">
-            <div className="d-md-flex justify-content-around">
+            <div className="d-block d-md-flex justify-content-between">
 
                 <div className="row">
 
