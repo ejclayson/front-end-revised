@@ -77,7 +77,7 @@ export default function ProductCard({ productProp }) {
 
         <div className="p-5">
             
-            <Card>
+            <Card className="container">
                     
                     <Card.Body >
                         <Card.Title >
