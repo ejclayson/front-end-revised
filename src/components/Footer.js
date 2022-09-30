@@ -7,9 +7,10 @@ const Footer = () => {
     return (
 
         <div className="basic-navbar-nav main-footer mb-0">
+            <div className="container">
             <div className="d-block d-md-flex justify-content-between">
 
-                <div className="row">
+                
 
                     {/* Column1 */}
 
