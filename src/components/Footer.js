@@ -7,13 +7,13 @@ const Footer = () => {
     return (
 
         <div className="basic-navbar-nav main-footer mb-0">
-            <div className="container justify-content-around">
+            <div className="d-md-flex justify-content-around">
 
                 <div className="row">
 
                     {/* Column1 */}
 
-                    <div className="col">
+                    <div className="col-md-2">
                         <h5>PRETTYFULL COLLECTIONS</h5>
                         <ui className="list-unstyled">
                             <li>Lot 12 Bock 136 Kasaganahan St.</li>
@@ -25,7 +25,7 @@ const Footer = () => {
 
                     {/* Column2 */}
 
-                    <div className="col">
+                    <div className="col-md-2">
                         <h5>E-COMMERCE APPS/LINKS</h5>
                         <ui className="list-unstyled">
                             <a href="https://shopee.ph/prettyfullcollections" target="_blank">
@@ -43,7 +43,7 @@ const Footer = () => {
 
                     {/* Column3 */}
 
-                    <div className="col">
+                    <div className="col-md-2">
                         <h5>SOCIAL MEDIA LINKS</h5>
                         <ui className="list-unstyled">
                             <a href="https://www.facebook.com/Prettyfull-Collections-108663461868654" target="_blank">
@@ -64,7 +64,7 @@ const Footer = () => {
                     {/* Column3 */}
 
 
-                    <div className="col">
+                    <div className="col-md-2">
                         <h5>EMAIL & CONTACT NUMBERS</h5>
                         <ui className="list-unstyled">
                             <li><Image src="/images/em.png" />prettyfullcollections@gmail.com</li>
