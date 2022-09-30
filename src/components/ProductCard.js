@@ -75,7 +75,7 @@ export default function ProductCard({ productProp }) {
 
     return (
 
-        <div className="p-3 d-flex">
+        <div className="p-3 d-flex flex-row">
             <div className="p-3">
             <Card>
                     <div class="container p-3">
