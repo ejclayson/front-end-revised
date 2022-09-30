@@ -76,9 +76,9 @@ export default function ProductCard({ productProp }) {
     return (
 
         <div className="p-3 d-md-flex  justify-content-around">
-            <div className="p-3 d-md-flex  justify-content-around">
-            <Card>
-                    <div class="container p-3 d-md-flex  justify-content-around">
+            
+            <Card className="col-md-2">
+                    
                     <Card.Body >
                         <Card.Title >
                             {name}
@@ -105,9 +105,9 @@ export default function ProductCard({ productProp }) {
                         <Button as={Link} to={`/products/${_id}`} variant="primary" className="btn">Details</Button>
                         {/* <Button as={Link} to={`/productitems/${productItemId}`} variant="primary">Details</Button> */}
                     </Card.Body>
-                </div>
+                
             </Card>
-            </div>
+            
         </div>
 
     )
