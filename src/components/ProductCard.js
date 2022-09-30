@@ -75,8 +75,8 @@ export default function ProductCard({ productProp }) {
 
     return (
 
-        <div className="d-md-flex">
-            <div className="justify-content-between">
+        <div className="d-md-flex justify-content-between">
+            <div className="p3">
             <Card>
                     <div class="container">
                     <Card.Body >
