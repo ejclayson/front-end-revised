@@ -7,8 +7,8 @@ const Footer = () => {
     return (
 
         <div className="basic-navbar-nav main-footer mb-0">
-            <div className="container">
-            <div className="d-block d-md-flex justify-content-around">
+            
+            <div className="d-md-flex justify-content-around">
 
                 
 
@@ -75,12 +75,13 @@ const Footer = () => {
 
                 </div>
 
-            </div>
+            
 
 
-            <hr />
-            <div className="container justify-content-center">
+            
+            
                 <div className="row">
+                <hr />
                     <p className="col-sm text-center mt-3">
                         COPYRIGHT&copy;{new Date().getFullYear()} PRETTYFULL COLLECTIONS Inc |
                         <a href="https://ejclayson.github.io/my-portfolio/" target="_blank">
@@ -90,7 +91,7 @@ const Footer = () => {
 
                     </p>
                 </div>
-            </div>
+            
 
 
 

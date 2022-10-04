@@ -37,7 +37,7 @@ export default function Products() {
             :
             <>
                 <h1 className="text-center">Products</h1>
-                <div class="container">
+                <div class="container mb-5">
                     
                    
                     
