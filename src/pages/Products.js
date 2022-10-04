@@ -4,6 +4,7 @@ import { Navigate } from "react-router-dom";
 
 import ProductCard from "../components/ProductCard";
 import UserContext from "../UserContext";
+import "./Products.css";
 
 export default function Products() {
 
@@ -35,11 +36,13 @@ export default function Products() {
             <Navigate to="/admin" />
             :
             <>
-                <div className="container p-5 mt-5 mb-5">
-                    <h1 className="text-center">Products</h1>
-                    <div className="d-block d-md-flex justify-content-between">
+                <h1 className="text-center">Products</h1>
+                <div class="container">
+                    
+                   
+                    
                     {Products}
-                    </div>
+                    
                 </div>
             </>
     )

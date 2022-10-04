@@ -17,7 +17,7 @@ export default function ProductCard({ productProp }) {
     // Scenario: Keep track the number of enrollees of each course.
 
     // Destructure the course properties into their own variables
-    const { _id, name, description, price, stocks } = productProp;
+    const { _id, name, description, price, stocks, image } = productProp;
     /*  const { productItemId, productItemName, productItemDescription, productItemPrice, productItemStocks } = productProp; */
     // Syntax:
     // const [stateName, setStateName] = useState(initialStateValue);
@@ -75,40 +75,43 @@ export default function ProductCard({ productProp }) {
 
     return (
 
-        <div className="p-3">
-            
+        
+
             <Card>
-                    
-                    <Card.Body className="text-center">
-                        <Card.Title >
-                            {name}
-                        </Card.Title>
-                        <Card.Subtitle >
-                            Description:
-                        </Card.Subtitle>
-                        <Card.Text>
-                            {description}
-                        </Card.Text>
-                        <Card.Subtitle>
-                            Price:
-                        </Card.Subtitle>
-                        <Card.Text>
-                            Php {price}
-                        </Card.Text>
-                        <Card.Subtitle>
-                            Stocks:
-                        </Card.Subtitle>
-                        <Card.Text>
-                            {stocks} available
-                        </Card.Text>
-                        {/*  <Button as={Link} to={`${process.env.REACT_APP_API_URL}/products/${id}`} variant="primary">Details</Button> */}
-                        <Button as={Link} to={`/products/${_id}`} variant="primary" className="btn">Details</Button>
-                        {/* <Button as={Link} to={`/productitems/${productItemId}`} variant="primary">Details</Button> */}
-                    </Card.Body>
-                
+
+                <Card.Body>
+
+                    <Card.Img variant="top" src={image} className="imageholder" />
+
+                    <Card.Title >
+                        {name}
+                    </Card.Title>
+                    <Card.Subtitle >
+                        Description:
+                    </Card.Subtitle>
+                    <Card.Text>
+                        {description}
+                    </Card.Text>
+                    <Card.Subtitle>
+                        Price:
+                    </Card.Subtitle>
+                    <Card.Text>
+                        Php {price}
+                    </Card.Text>
+                    <Card.Subtitle>
+                        Stocks:
+                    </Card.Subtitle>
+                    <Card.Text>
+                        {stocks} available
+                    </Card.Text>
+                    {/*  <Button as={Link} to={`${process.env.REACT_APP_API_URL}/products/${id}`} variant="primary">Details</Button> */}
+                    <Button as={Link} to={`/products/${_id}`} variant="primary" className="btn">Details</Button>
+                    {/* <Button as={Link} to={`/productitems/${productItemId}`} variant="primary">Details</Button> */}
+                </Card.Body>
+
             </Card>
-            
-        </div>
+        
+        
 
     )
 }

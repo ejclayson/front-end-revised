@@ -1,6 +1,5 @@
-.container {
-    /* Add shadows to create the "card" effect */
-overflow: hidden;
+.card {
+    overflow: hidden;
     box-shadow: 0 2px 20px $clr-gray300;
     border-radius: $radius;
     display: flex;
@@ -9,13 +8,3 @@ overflow: hidden;
     cursor: pointer;
     transition: transform 200ms ease-in;
 }
-
-.card:hover {
-    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-}
-
-
-/* .container {
-    padding: 2px 16px;
-    
-} */

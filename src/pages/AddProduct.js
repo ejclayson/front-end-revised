@@ -18,6 +18,7 @@ export default function AddProduct() {
     const [pDescription, setPdescription] = useState('');
     const [pPrice, setPprice] = useState('');
     const [pStock, setPstock] = useState('');
+    const [pImage, setPimage] = useState('');
 
     // create a state to detemine whether the submit button is enabled or not.
     const [isActive, setIsActive] = useState(false);
@@ -35,6 +36,7 @@ export default function AddProduct() {
     console.log(pDescription);
     console.log(pPrice);
     console.log(pStock);
+    console.log(pImage);
 
     useEffect(() => {
 
@@ -42,14 +44,14 @@ export default function AddProduct() {
         // All the fields are populated.
         // both passwords match.
 
-        if (pName !== '' && pDescription !== '' && pPrice !== '' && pStock !== '') {
+        if (pName !== '' && pDescription !== '' && pPrice !== '' && pStock !== '' && pImage !== '') {
             setIsActive(true);
         }
         else {
             setIsActive(false);
         }
 
-    }, [pName, pDescription, pPrice, pStock])
+    }, [pName, pDescription, pPrice, pStock, pImage])
 
     // Function to simulate user registration
     function addNewProduct(e) {
@@ -91,6 +93,7 @@ export default function AddProduct() {
                             description: pDescription,
                             price: pPrice,
                             stocks: pStock,
+                            image: pImage
                         })
                     })
                         .then(res => res.json())
@@ -109,6 +112,7 @@ export default function AddProduct() {
                                 setPdescription('');
                                 setPprice('');
                                 setPstock('');
+                                setPimage('');
 
                                 // Allow us to redirect the user to the login page after account registration
                                 Navigate("/admin");
@@ -185,6 +189,17 @@ export default function AddProduct() {
                             placeholder="Enter how many stocks of the product"
                             onChange={e => setPstock(e.target.value)}
                             value={pStock}
+                            required
+                        />
+                    </Form.Group>
+
+                    <Form.Group className="mb-3" controlId="productItemImage">
+                        <Form.Label>Image of product</Form.Label>
+                        <Form.Control
+                            type="text"
+                            placeholder="Enter image name and location"
+                            onChange={e => setPimage(e.target.value)}
+                            value={pImage}
                             required
                         />
                     </Form.Group>
