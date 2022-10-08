@@ -103,7 +103,9 @@ export default function ProductCard({ productProp }) {
                     {stocks} available
                 </Card.Text>
                 {/*  <Button as={Link} to={`${process.env.REACT_APP_API_URL}/products/${id}`} variant="primary">Details</Button> */}
+                <div className="text-center">
                 <Button as={Link} to={`/products/${_id}`} variant="primary" className="btn">Details</Button>
+                </div>
                 {/* <Button as={Link} to={`/productitems/${productItemId}`} variant="primary">Details</Button> */}
             </Card.Body>
 
