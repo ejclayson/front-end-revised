@@ -16,6 +16,7 @@ import UserContext from "../UserContext";
 
 
 
+
 //addnewproduct
 //const Navigate = useNavigate();
 
@@ -38,6 +39,9 @@ function retrieveorders() {
 //retrieveorders
 
 
+
+
+
 export default function Retrieve() {
     const [allOrders, setAllOrders] = useState([]);
 
@@ -49,9 +53,54 @@ export default function Retrieve() {
 
     const [Orders, setOrders] = useState([]);
 
+
+
+    //FUNCTION TO TRANSACT ORDER
+    const transact = (orderId) => {
+        console.log(orderId);
+        //console.log(name);
+
+        // Using the fetch method to set the isActive property of the course document to false
+        fetch(`${process.env.REACT_APP_API_URL}/orders/transact/${orderId}`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${localStorage.getItem("token")}`
+            },
+            body: JSON.stringify({
+                isntTransacted: false
+            })
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+
+                if (data) {
+                    Swal.fire({
+                        title: "Order Transacted Successfully",
+                        icon: "success",
+                        text: `${orderId} is now inactive.`
+                    });
+                    // To show the update with the specific operation intiated.
+                    fetchData();
+                }
+                else {
+                    Swal.fire({
+                        title: "Order Transaction Unsuccessful",
+                        icon: "error",
+                        text: "Something went wrong. Please try again later!"
+                    });
+                }
+            })
+    }
+//FUNCTION TO TRANSACT ORDER
+
+
+
+
     //fetchData() function to get all the active/inactive courses.
     const fetchData = () => {
-        // get all the courses from the database
+        // get all the existing orders from the database
         fetch(`${process.env.REACT_APP_API_URL}/orders/allOrders`, {
             headers: {
                 "Authorization": `Bearer ${localStorage.getItem("token")}`
@@ -84,12 +133,24 @@ export default function Retrieve() {
                                     <td>
                                         {details.quantity}
                                     </td>
+                                    <td>
 
+
+
+
+                                        <Button variant="danger" size="small" onClick={() =>
+                                            transact(orders._id)}>
+                                            Done
+                                        </Button>
+
+
+
+                                    </td>
                                 </>
 
                             ))}
 
-
+                     
 
                         </tr>
                     )
@@ -144,6 +205,7 @@ export default function Retrieve() {
                                 <th>Price</th>
                                 <th>Product Name</th>
                                 <th>Quantity</th>
+                                <th>Transacted?</th>
                             </tr>
                         </thead>
                         <tbody>
