@@ -36,13 +36,14 @@ export default function Products() {
             <Navigate to="/admin" />
             :
             <>
+                
                 <h1 className="text-center">Products</h1>
-                <div class="container mb-5">
-                    
-                   
-                    
+                <div className="wrapper mb-5 mt-5">
+
+
+
                     {Products}
-                    
+
                 </div>
             </>
     )

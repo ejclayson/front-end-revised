@@ -4,6 +4,7 @@ import { Navigate } from "react-router-dom";
 
 import OrderCard from "../components/OrderCard";
 import UserContext from "../UserContext";
+import "./Orders.css";
 
 export default function Orders() {
 
@@ -34,15 +35,31 @@ export default function Orders() {
 
 
     return (
+        
         (user.isAdmin)
             ?
             <Navigate to="/admin" />
             :
             <>
-                <div className="p-5 mt-5 mb-5">
-                    <h1 className="text-center">Order History</h1>
-                    {Orders}
-                </div>
+                
+                
+                    <h1 className="text-center my-4 mb-5 mt-5">Order History</h1>
+
+
+                <div className="container-lg">
+                    
+                {/* <div className="container mt-5 mb-5 w-500"> */}
+                    
+                    
+                        
+                       
+                <span className="mb-5 p-5">
+                            {Orders}
+                </span>
+                </div>   
+                    
+                
+                
             </>
     )
 }

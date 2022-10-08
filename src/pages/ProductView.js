@@ -23,6 +23,7 @@ export default function ProductView() {
     /* const [description, setDescription] = useState(''); */
     const [price, setPrice] = useState(0);
     const [stocks, setStocks] = useState(0);
+    const [image, setImage] = useState(0);
 
 
     const [quantity, setQuantity] = useState('');
@@ -44,6 +45,7 @@ export default function ProductView() {
                 /*  setDescription(data.description); */
                 setPrice(data.price);
                 setStocks(data.stocks);
+                setImage(data.image);
 
             });
 
@@ -66,7 +68,8 @@ export default function ProductView() {
                         {
                             productId: productId,
                             productName: name,
-                            quantity: quantity
+                            quantity: quantity,
+                            productImage: image
                         }
                     ]
             })
@@ -139,11 +142,12 @@ export default function ProductView() {
 
 
     return (
-        <Container className="mt-5">
+        <Container className="mt-5 mb-5">
             <Row>
                 <Col lg={{ span: 6, offset: 3 }}>
                     <Card>
                         <Card.Body className="text-center">
+                            <Card.Img variant="top" src={image} className="imageholder" />
                             <Card.Title>{name}</Card.Title>
                             {/* <Card.Subtitle>Description:</Card.Subtitle>
                             <Card.Text>{description}</Card.Text> */}

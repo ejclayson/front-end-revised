@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 
 import { Card, Button } from 'react-bootstrap';
+/* import "./OrderCard.css"; */
 /* import { Link } from "react-router-dom"; */
 
 // destructure the "courseProp" from the prop parameter
@@ -16,6 +17,32 @@ export default function OrderCard({ orderProp }) {
     // Destructure the course properties into their own variables
 
     const { _id, totalAmount, purchasedOn, products } = orderProp;
+    const [isActive, setIsActive] = useState(false);
+    
+    const dateToTime = date => date.toLocaleString('tl-PH', {
+        hour: 'numeric',
+        minute: 'numeric'
+    });
+
+    const dateString = purchasedOn;
+    const userOffset = new Date().getTimezoneOffset() * 60 * 1000;
+    const localDate = new Date(dateString);
+    const utcDate = new Date(localDate.getTime() + userOffset);
+
+
+
+    const { timeZone } = Intl.DateTimeFormat().resolvedOptions();
+
+
+
+    const d = new Date();
+    const localTime = d.getTime();
+
+
+    const localOffset = d.getTimezoneOffset() * 60000;
+
+    
+    
     /*  const { productItemId, productItemName, productItemDescription, productItemPrice, productItemStocks } = productProp; */
     // Syntax:
     // const [stateName, setStateName] = useState(initialStateValue);
@@ -72,40 +99,64 @@ export default function OrderCard({ orderProp }) {
     // }, [seats]);
 
     return (
-        <Card className="my-3 text-center">
-            <Card.Body>
-                <Card.Subtitle>
-                    Product Name:
-                </Card.Subtitle>
-                <Card.Text>
-                    {products[0].productName}
-                </Card.Text>
-                <Card.Subtitle>
-                    Quantity Ordered:
-                </Card.Subtitle>
-                <Card.Text>
-                    {products[0].quantity}
-                </Card.Text>
-                <Card.Subtitle>
-                    Total Amount:
-                </Card.Subtitle>
-                <Card.Title>
-                    {totalAmount}
-                </Card.Title>
-                <Card.Subtitle>
-                    Date/Time of Purchase:
-                </Card.Subtitle>
-                <Card.Text>
-                    {purchasedOn}
-                </Card.Text>
+<>
+            
+            
+            <div className="accordion">   
+                <div className="accordion-item">
+                    
+                    <div className="accordion-title bg-secondary text-white"
+                        onClick={() => setIsActive(!isActive)}
+                    >
+                        <div> Order # :  {products[0]._id}</div>
+                        <div>{isActive ? '-' : '+'}</div>
+                    </div>
+                    
+            
+                    
+                       
+                    
+                    
+                    {isActive &&  <div className="accordion-content">
+                        <div className="text-center"><img src={products[0].productImage} className="w-25"></img></div>
+                                Product Name:
+                                <ul>
+                                <li>
+                                        {products[0].productName}
+                                </li>
+                                    
+                                </ul>
+                                Quantity Ordered:
+                                <ul>
+                                    <li>
+                                        {products[0].quantity}
+                                    </li>
 
-                {/*  <Card.Text>
-                    {products} available
-                </Card.Text> */}
-                {/*  <Button as={Link} to={`${process.env.REACT_APP_API_URL}/products/${id}`} variant="primary">Details</Button> */}
-                {/* <Button variant="primary">Details</Button> */}
-                {/* <Button as={Link} to={`/productitems/${productItemId}`} variant="primary">Details</Button> */}
-            </Card.Body>
-        </Card>
+                                </ul>
+                                Total Amount:
+                                <ul>
+                                    <li>
+                                        {totalAmount}
+                                    </li>
+
+                                </ul>
+
+                                Date & Time Purchased:
+                                <ul>
+                                    <li>
+                               {/*  {`${dateToTime(utcDate)} (${dateToTime(localDate)})`} */}
+                                {purchasedOn.toString()}
+                                    </li>
+
+                                </ul>
+                        </div>
+                        }
+                    </div>
+                    
+                </div>   
+            
+      
+            
+        </>
     )
 }

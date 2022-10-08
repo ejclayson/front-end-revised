@@ -1,5 +1,3 @@
-
-
 import { useState, useEffect } from "react";
 
 import { Card, Button } from 'react-bootstrap';
@@ -77,41 +75,42 @@ export default function ProductCard({ productProp }) {
 
         
 
-            <Card>
+        <Card>
 
-                <Card.Body>
+            <Card.Body>
 
-                    <Card.Img variant="top" src={image} className="imageholder" />
+                <Card.Img variant="top" src={image} className="imageholder" />
 
-                    <Card.Title >
-                        {name}
-                    </Card.Title>
-                    <Card.Subtitle >
-                        Description:
-                    </Card.Subtitle>
-                    <Card.Text>
-                        {description}
-                    </Card.Text>
-                    <Card.Subtitle>
-                        Price:
-                    </Card.Subtitle>
-                    <Card.Text>
-                        Php {price}
-                    </Card.Text>
-                    <Card.Subtitle>
-                        Stocks:
-                    </Card.Subtitle>
-                    <Card.Text>
-                        {stocks} available
-                    </Card.Text>
-                    {/*  <Button as={Link} to={`${process.env.REACT_APP_API_URL}/products/${id}`} variant="primary">Details</Button> */}
-                    <Button as={Link} to={`/products/${_id}`} variant="primary" className="btn">Details</Button>
-                    {/* <Button as={Link} to={`/productitems/${productItemId}`} variant="primary">Details</Button> */}
-                </Card.Body>
+                <Card.Title >
+                    {name}
+                </Card.Title>
+                <Card.Subtitle >
+                    Description:
+                </Card.Subtitle>
+                <Card.Text>
+                    {description}
+                </Card.Text>
+                <Card.Subtitle>
+                    Price:
+                </Card.Subtitle>
+                <Card.Text>
+                    Php {price}
+                </Card.Text>
+                <Card.Subtitle>
+                    Stocks:
+                </Card.Subtitle>
+                <Card.Text>
+                    {stocks} available
+                </Card.Text>
+                {/*  <Button as={Link} to={`${process.env.REACT_APP_API_URL}/products/${id}`} variant="primary">Details</Button> */}
+                <Button as={Link} to={`/products/${_id}`} variant="primary" className="btn">Details</Button>
+                {/* <Button as={Link} to={`/productitems/${productItemId}`} variant="primary">Details</Button> */}
+            </Card.Body>
 
-            </Card>
-        
+        </Card>
+
         
 
     )
 }
+

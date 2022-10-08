@@ -1,10 +1,8 @@
-.card {
-    overflow: hidden;
-    box-shadow: 0 2px 20px $clr-gray300;
-    border-radius: $radius;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    cursor: pointer;
-    transition: transform 200ms ease-in;
+.wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 25rem));
+    gap: 1rem;
+    justify-content: center;
 }
+
+/* Products.js */
