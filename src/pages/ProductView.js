@@ -55,6 +55,11 @@ export default function ProductView() {
     console.log(productId); */
     const checkout = (productId) => {
 
+
+        if(quantity<1){
+            alert("Quantity can't be lower than 1!");
+        }
+        else{
         fetch(`${process.env.REACT_APP_API_URL}/orders/checkout/${productId}`, {
             method: "POST",
             headers: {
@@ -97,7 +102,7 @@ export default function ProductView() {
                 }
 
             });
-
+        }
     }
 
 
@@ -127,7 +132,7 @@ export default function ProductView() {
     
         }  */
 
-    /*   useEffect(() => {
+   /*    useEffect(() => {
          
   
           if (quantity <= 0) {
@@ -168,7 +173,7 @@ export default function ProductView() {
                                                 <Form.Control
                                                     type="number"
                                                     placeholder="Supply quantity here"
-                                                    min="1"
+                                                    min="0"
                                                     max={stocks}
                                                     value={quantity}
                                                     onChange={e => setQuantity(e.target.value)}
