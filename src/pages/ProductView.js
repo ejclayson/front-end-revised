@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 
-import { Container, Card, Button, Row, Col, Form } from "react-bootstrap";
+import { Container, Card, Button, Row, Col, Form, InputGroup } from "react-bootstrap";
 import { useParams, useNavigate, Link } from "react-router-dom";
 
 
@@ -9,9 +9,9 @@ import Swal from "sweetalert2";
 
 import UserContext from "../UserContext";
 
-const cartFromLocalStorage = JSON.parse(localStorage.getItem('cart') || "[]");
+//const cartFromLocalStorage = JSON.parse(localStorage.getItem('cart') || "[]");
 
-let fromfield = [];
+//let fromfield = [];
 
 export default function ProductView() {
 
@@ -21,11 +21,18 @@ export default function ProductView() {
 
 
 
-    const [cart, setCart] = useState(cartFromLocalStorage);
+  //  const [cart, setCart] = useState(cartFromLocalStorage);
 
-    useEffect(() => {
+   /*  useEffect(() => {
         localStorage.setItem('cart', JSON.stringify(cart));
-    }, [cart]);
+    }, [cart]); */
+
+   /*  useEffect(() => {
+        if (localStorage.getItem("cart")) {
+            setCart(JSON.parse(localStorage.getItem("cart")));
+        }
+    }, []); */
+
 
 
     const { user } = useContext(UserContext);
@@ -47,9 +54,9 @@ export default function ProductView() {
     const [image, setImage] = useState(0);
 
 
-    const [quantity, setQuantity] = useState('');
+    const [quantity, setQuantity] = useState(1);
 
-
+    //const [qty, setQty] = useState(1);
 
 
     useEffect(() => {
@@ -69,51 +76,39 @@ export default function ProductView() {
 
     /* ADDCART FUNCTION START */
     const addcart = (productId) => {
-        if (quantity < 1) {
-            alert("Quantity can't be lower than 1!");
+        let alreadyInCart = false;
+        let productIndex;
+        let cart = [];
+
+        if (localStorage.getItem("cart")){
+            cart = JSON.parse(localStorage.getItem("cart"));
         }
-        else if (fromfield.length === 0){
-            fromfield.push({
-                cartId: productId,
-                cartName: name,
-                cartQuantity: quantity,
-                cartImage: image,
-                cartPrice: price,
-                cartSubtotal: quantity * price,
-            });
-            localStorage.setItem(`cart`, JSON.stringify([...fromfield]));
-            alert(quantity + " item/s added to cart!");
-            navigate("/products");
+    
+        for (let i = 0; i < cart.length; i++) {
+            if (cart[i].cartId === productId) {
+                alreadyInCart = true;
+                productIndex = i;
+            }
+        }
+
+        if (alreadyInCart){
+            cart[productIndex].cartQuantity = parseInt(cart[productIndex].cartQuantity)  + parseInt(quantity);
+            cart[productIndex].cartSubtotal = parseInt(cart[productIndex].cartPrice) * parseInt(cart[productIndex].cartQuantity);
         }
         else {
-            let fromfieldend = fromfield.length;
-                for (let i = 0 ; i < fromfieldend ; i++){
-                    if(fromfield[i].cartId === productId){
-                        fromfield[i].cartId = productId;
-                        fromfield[i].cartName = name;
-                        fromfield[i].cartQuantity = parseInt(fromfield[i].cartQuantity) + parseInt(quantity);
-                        fromfield[i].cartImage = image;
-                        fromfield[i].cartSubtotal = fromfield[i].cartQuantity * price;
-                        localStorage.setItem(`cart`, JSON.stringify([fromfield[i]]));
-                        alert(quantity + " item/s added to cart!");
-                        navigate("/products");
-                    }
-                    else {
-                        //alert("cart full")
-                        fromfield.push({
-                            cartId: productId,
-                            cartName: name,
-                            cartQuantity: quantity,
-                            cartImage: image,
-                            cartPrice: price,
-                            cartSubtotal: quantity * price,
-                        });
-                        alert(quantity + " item/s added to cart!");
-                        localStorage.setItem(`cart`, JSON.stringify([...fromfield]));
-                        navigate("/products");
-                    }
-                }
-            } 
+            //alert("cart full")
+                cart.push({
+                    cartId: productId,
+                    cartName: name,
+                    cartQuantity: quantity,
+                    cartImage: image,
+                    cartPrice: price,
+                    cartSubtotal: quantity * price,
+                });
+            }      
+        alert(quantity + " item/s added to cart product!");
+        localStorage.setItem("cart", JSON.stringify(cart));
+        navigate("/products");   
     }
 
 
@@ -172,7 +167,24 @@ export default function ProductView() {
         }
     }
 
+    const reduceQty = () => {
+        if (quantity <= 1) {
+            alert("Quantity can't be lower than 1.");
+        } else {
+            setQuantity(quantity - 1);
+        }
+    };
 
+    const qtyInput = (value) => {
+        if (value === "") {
+            value = 1;
+        } else if (value === "0") {
+            alert("Quantity can't be lower than 1.");
+            value = 1;
+        }
+
+        setQuantity(value);
+    };
  
     return (
         <Container className="mt-5 mb-5">
@@ -193,21 +205,28 @@ export default function ProductView() {
                                     ?
                                     <>
                                         <Card.Subtitle>Quantity:</Card.Subtitle>
-
+                                        
                                         {/* <Button className="btn btn-dark ms-2" variant="primary" onClick={quantityfier}>+</Button> */}
 
                                         <Card.Text>
-                                            <Form>
+                                            
+                                                <InputGroup>
                                                 <Form.Control
                                                     type="number"
                                                     placeholder="Supply quantity here"
-                                                    min="0"
+                                                    min="1"
                                                     max={stocks}
                                                     value={quantity}
-                                                    onChange={e => setQuantity(e.target.value)}
-                                                    required
+                                                    onChange={e => qtyInput(e.target.value)}
                                                 />
-                                            </Form>
+                                            
+                                            <Button variant="outline-secondary" onClick={reduceQty}>
+                                                ➖
+                                            </Button>
+                                                <Button variant="outline-secondary" onClick={() => setQuantity(quantity + 1)}>
+                                                ➕
+                                            </Button>
+                                            </InputGroup>
                                         </Card.Text>
                                         
                                         <Card.Text>
