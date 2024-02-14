@@ -9,7 +9,7 @@ export default function Banner() {
                 <Carousel.Item>
                     <img
                         className="d-block responsive"
-                        src="/images/rl.png"
+                        src="/images/p1.jpg"
 
                     />
 
@@ -17,7 +17,7 @@ export default function Banner() {
                 <Carousel.Item>
                     <img
                         className="d-block responsive"
-                        src="/images/li.png"
+                        src="/images/p2.jpg"
 
                     />
 
@@ -25,7 +25,7 @@ export default function Banner() {
                 <Carousel.Item>
                     <img
                         className="d-block responsive"
-                        src="/images/pn.png"
+                        src="/images/p3.jpg"
 
                     />
 

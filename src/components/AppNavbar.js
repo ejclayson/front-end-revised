@@ -29,7 +29,7 @@ export default function AppNavbar() {
         <div className="main-navbar">
             <Navbar expand="lg">
                 <Container fluid>
-                    <Navbar.Brand as={NavLink} to="/" style={{ color: '#dcb209' }}><Image src="/images/pc.png" />PrettyfullCollections</Navbar.Brand>
+                    <Navbar.Brand as={NavLink} to="/" style={{ color: '#dcb209' }}><Image src="/images/pc.png" />BANKCRAFT</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         {/*
