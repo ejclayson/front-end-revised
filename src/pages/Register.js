@@ -14,6 +14,7 @@ export default function Register() {
     const navigate = useNavigate();
 
     // create state hooks to store the values of the input fields
+    const [uName, setUName] = useState('');
     const [fName, setFName] = useState('');
     const [lName, setLName] = useState('');
     const [email, setEmail] = useState('');
@@ -33,6 +34,7 @@ export default function Register() {
     */
 
     // Check if the values are successfully binding
+    console.log(uName);
     console.log(fName);
     console.log(lName);
     console.log(email);
@@ -46,27 +48,105 @@ export default function Register() {
         // All the fields are populated.
         // both passwords match.
 
-        if ((fName !== '' && lName !== '' && email !== '' && mobileNo !== '' && password1 !== '' && password2 !== '') && (password1 === password2)) {
+        if ((uName !== "" && fName !== '' && lName !== '' && email !== '' && mobileNo !== '' && password1 !== '' && password2 !== '') && (password1 === password2)) {
             setIsActive(true);
         }
         else {
             setIsActive(false);
         }
 
-    }, [fName, lName, email, mobileNo, password1, password2])
+    }, [uName, fName, lName, email, mobileNo, password1, password2])
 
     // Function to simulate user registration
-    function registerUser(e) {
+
+
+ 
+
+                    
+
+
+                
+
+
+
+//register only 202402191319
+    // function registerUser(e) {
+    //     // Prevents page loading/ redirection via form submission.
+    //     e.preventDefault();
+
+    //     fetch(`${process.env.REACT_APP_API_URL}/users/register`, {
+    //                     method: "POST",
+    //                     headers: {
+    //                         "Content-Type": "application/json"
+    //                     },
+    //                     body: JSON.stringify({
+    //                         username: uName,
+    //                         firstname: fName,
+    //                         lastname: lName,
+    //                         email: email,
+    //                         mobile: mobileNo,
+    //                         password: password1
+                            
+    //                     })
+    //                 })
+    //                     .then(res => res.json())
+    //                     .then(data => {
+    //                         console.log(data);
+
+    //                         if (data) {
+    //                             Swal.fire({
+    //                                 title: "Registration Successful",
+    //                                 icon: "success",
+    //                                 text: "Prettyfull Collections!"
+    //                             });
+
+    //                             // Clear input fields
+    //                             setUName('');
+    //                             setFName('');
+    //                             setLName('');
+    //                             setEmail('');
+    //                             setMobileNo('');
+    //                             setPassword1('');
+    //                             setPassword2('');
+
+    //                             // Allow us to redirect the user to the login page after account registration
+    //                             navigate("/login");
+    //                         }
+    //                         else {
+
+    //                             Swal.fire({
+    //                                 title: "Something went wrong",
+    //                                 icon: "error",
+    //                                 text: "Please try again."
+    //                             });
+
+    //                         }
+
+    //         })
+
+
+
+    //     // Notify user for registration
+    //     // alert("Thank you for registering!");
+
+    // }
+
+
+
+
+     function registerUser(e) {
         // Prevents page loading/ redirection via form submission.
         e.preventDefault();
 
-        fetch(`${process.env.REACT_APP_API_URL}/users/checkemail`, {
+        fetch(`${process.env.REACT_APP_API_URL}/users/check`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                email: email
+                username: uName,
+                email: email,
+                mobile: mobileNo
             })
         })
             .then(res => res.json())
@@ -75,9 +155,9 @@ export default function Register() {
 
                 if (data) {
                     Swal.fire({
-                        title: "Duplicate email found",
+                        title: "Duplicate username, email, or mobile found",
                         icon: "error",
-                        text: "Kindly provide another email to complete the registration."
+                        text: "Kindly provide another username, email, or mobile to complete the registration."
                     })
                 }
                 else {
@@ -88,11 +168,12 @@ export default function Register() {
                             "Content-Type": "application/json"
                         },
                         body: JSON.stringify({
-                            firstName: fName,
-                            lastName: lName,
+                            username: uName,
+                            firstname: fName,
+                            lastname: lName,
                             email: email,
-                            password: password1,
-                            mobileNo: mobileNo
+                            mobile: mobileNo,
+                            password: password1
                         })
                     })
                         .then(res => res.json())
@@ -107,6 +188,7 @@ export default function Register() {
                                 });
 
                                 // Clear input fields
+                                setUName('');
                                 setFName('');
                                 setLName('');
                                 setEmail('');
@@ -138,12 +220,13 @@ export default function Register() {
         // alert("Thank you for registering!");
 
     }
+    
+
+
+
 
     return (
-        // (user.id !== null)
-        // ?
-        // 	<Navigate to="/courses" />
-        // :
+     
         <>
             <div className="p-5">
 
@@ -151,7 +234,22 @@ export default function Register() {
 
                 <Form onSubmit={e => registerUser(e)}>
 
-                    <Form.Group className="mb-3" controlId="firstName">
+
+
+
+ <Form.Group className="mb-3" controlId="username">
+                        <Form.Label>User Name</Form.Label>
+                        <Form.Control
+                            type="text"
+                            placeholder="Enter user name"
+                            value={uName}
+                            onChange={e => setUName(e.target.value)}
+                            required
+                        />
+                    </Form.Group>
+
+
+                    <Form.Group className="mb-3" controlId="firstname">
                         <Form.Label>First Name</Form.Label>
                         <Form.Control
                             type="text"
@@ -162,7 +260,7 @@ export default function Register() {
                         />
                     </Form.Group>
 
-                    <Form.Group className="mb-3" controlId="lastName">
+                    <Form.Group className="mb-3" controlId="lastname">
                         <Form.Label>Last Name</Form.Label>
                         <Form.Control
                             type="text"
@@ -173,7 +271,7 @@ export default function Register() {
                         />
                     </Form.Group>
 
-                    <Form.Group className="mb-3" controlId="emailAddress">
+                    <Form.Group className="mb-3" controlId="email">
                         <Form.Label>Email Address</Form.Label>
                         <Form.Control
                             type="email"
@@ -187,7 +285,7 @@ export default function Register() {
                         </Form.Text>
                     </Form.Group>
 
-                    <Form.Group className="mb-3" controlId="mobileNo">
+                    <Form.Group className="mb-3" controlId="mobile">
                         <Form.Label>Mobile Number</Form.Label>
                         <Form.Control
                             type="number"

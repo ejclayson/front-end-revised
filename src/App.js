@@ -14,7 +14,7 @@ import Products from "./pages/Products";
 import ProductView from "./pages/ProductView";
 import Orders from "./pages/Orders";
 import Footer from "./components/Footer";
-
+import "bootswatch/dist/quartz/bootstrap.min.css";
 
 
 import './App.css';
