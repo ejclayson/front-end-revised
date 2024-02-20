@@ -138,7 +138,7 @@ export default function Register() {
         // Prevents page loading/ redirection via form submission.
         e.preventDefault();
 
-        fetch(`${process.env.REACT_APP_API_URL}/users/check`, {
+        fetch(`${process.env.REACT_APP_API_URL}/user/add`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -162,7 +162,7 @@ export default function Register() {
                 }
                 else {
 
-                    fetch(`${process.env.REACT_APP_API_URL}/users/register`, {
+                    fetch(`${process.env.REACT_APP_API_URL}/user/register`, {
                         method: "POST",
                         headers: {
                             "Content-Type": "application/json"
